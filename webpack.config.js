@@ -1,11 +1,5 @@
 const path = require('path');
 
-
-const config = {
-
-}
-
-
 module.exports = {
   entry : {
     main : './app/index.js', // app入口
@@ -18,5 +12,5 @@ module.exports = {
     // loaders
     rules : []
   },
-  plugin : []
+  plugins : []
 }
