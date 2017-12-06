@@ -1,4 +1,5 @@
 const path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry : {
@@ -6,11 +7,25 @@ module.exports = {
   },
   output : {
     path : path.resolve(__dirname, 'build'), // 输出路径
-    filename : '[name].js?[chunkhash]' // 输出文件名
+    filename : '[name].js' // 输出文件名
   },
   module : {
     // loaders
-    rules : []
+    rules : [
+      {
+        test : /\.css$/,
+        use : [
+          'style-loader',
+          'css-loader'
+        ]
+      }
+    ]
   },
-  plugins : []
+  plugins : [
+    // 出问题？
+    // new HtmlWebpackPlugin({
+    //   filename: 'test.html',
+    //   template: path.resolve(__dirname, './app/index.html')
+    // })
+  ]
 }
