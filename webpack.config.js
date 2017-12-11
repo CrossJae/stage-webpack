@@ -2,14 +2,14 @@ const path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry : {
+  entry : { // entry最好写成对象
     main : './app/index.js', // app入口
   },
-  output : {
-    path : path.resolve(__dirname, 'build'), // 输出路径
+  output : { // output相当于一套规则，所有入口都必须遵守
+    path : path.resolve(__dirname, 'build'), // 必须传绝对路径
     filename : '[name].js' // 输出文件名
   },
-  module : {
+  module : { // webpack默认只能对Js打包，其他类型文件需要loader处理
     // loaders
     rules : [
       {
@@ -22,10 +22,10 @@ module.exports = {
     ]
   },
   plugins : [
-    // 出问题？
-    // new HtmlWebpackPlugin({
-    //   filename: 'test.html',
-    //   template: path.resolve(__dirname, './app/index.html')
-    // })
+    // 生成html
+    new HtmlWebpackPlugin({
+      filename: 'test.html',
+      template: path.resolve(__dirname, './app/index.html')
+    })
   ]
 }
