@@ -10,6 +10,10 @@
   * [x] babel
   * [] autoprefixer
   * [] css / images / jsx / ttf loaders
+  * [] 批量替换images路径再打包
+  * [x] 单独压缩css
+  * [] 配置文件单独归类
+  * [] 配置文件分 开发 / 生产
   * [] stage-vue
   * [] stage-react
 * v1.0 [活动页] 支持单页面的打包，包括js,css（css3）,image（png,gif,jpg），支持es6，输出一个js的页面，和相应的html，对html,js进行压缩
