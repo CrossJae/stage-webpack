@@ -7,13 +7,14 @@ module.exports = {
     main: './app/entry.js', // app入口
   },
   output: { // output相当于一套规则，所有入口都必须遵守
-    path: path.resolve(__dirname, 'build'), // 必须传绝对路径
+    path: path.resolve('./build/'),//path.resolve(__dirname, 'build'), // 必须传绝对路径
     filename: '[name].js' // 输出文件名
   },
   module: { // webpack默认只能对Js打包，其他类型文件需要loader处理
     // loaders
     rules: [
       {
+        // css
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -21,6 +22,7 @@ module.exports = {
         })
       },
       {
+        // babel 兼容es6
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
@@ -33,13 +35,12 @@ module.exports = {
     ]
   },
   plugins: [
-    // 生成html
+    // 生成html，有其他可配置参数
     new HtmlWebpackPlugin({
       filename: 'index.html', // 输出文件名
-      template: path.resolve(__dirname, './app/template/index.html'), // 模版
+      template: path.resolve('./app/template/index.html'), // 模版
     }),
-    // 单独分离css
+    // 单独分离css，有其他可配置参数
     new ExtractTextPlugin('[name].css'),
-    // new ExtractTextPlugin(cdn + '[name].css', { allChunks: true }),
   ]
 }
