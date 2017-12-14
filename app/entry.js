@@ -1,9 +1,9 @@
-// index.js
-require('./components/style.css');
+// 引入css
+import './components/style.css';
+// 引入js
+import './lib/index';
 import './lib/other';
 
-const a = 'hello';
-let b = 10;
-(a, b) => {
-  console.log(a + b);
-}
+var img1 = document.createElement("img");
+img1.src = require("./assets/small.png");
+document.body.appendChild(img1);

@@ -31,7 +31,11 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
-      }
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader?limit=8192'
+      },
     ]
   },
   plugins: [
