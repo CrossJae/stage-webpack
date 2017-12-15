@@ -1,10 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: { // entry最好写成对象
     main: './app/entry.js', // app入口
+    other: './app/lib/other.js',
   },
   output: { // output相当于一套规则，所有入口都必须遵守
     path: path.resolve('./build/'),//path.resolve(__dirname, 'build'), // 必须传绝对路径
@@ -46,5 +50,15 @@ module.exports = {
     }),
     // 单独分离css，有其他可配置参数
     new ExtractTextPlugin('[name].css'),
+    // ?压缩js？
+    new uglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    // 避免重复，提取公用js
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common' // 指定公共 bundle 的名称。
+    })
   ]
 }
