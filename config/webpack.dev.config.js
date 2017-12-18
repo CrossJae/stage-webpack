@@ -14,6 +14,10 @@ module.exports = {
     path: path.resolve('./build/'),//path.resolve(__dirname, 'build'), // 必须传绝对路径
     filename: '[name].js' // 输出文件名
   },
+  devtool: 'source-map', // source-map
+  devServer: {
+    contentBase: './build'
+  },
   module: { // webpack默认只能对Js打包，其他类型文件需要loader处理
     // loaders
     rules: [
@@ -50,7 +54,7 @@ module.exports = {
     }),
     // 单独分离css，有其他可配置参数
     new ExtractTextPlugin('[name].css'),
-    // ?压缩js？
+    // ?压缩js？压缩css？
     new uglifyJsPlugin({
       compress: {
         warnings: false

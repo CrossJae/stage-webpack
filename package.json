@@ -5,8 +5,9 @@
   "main": "entry.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "webpack --config config/webpack.config.js",
-    "dev": "rm -rf build & npm run serve"
+    "dev": "webpack --config config/webpack.dev.config.js",
+    "serve": "webpack-dev-server --open",
+    "build": "rm -rf build & webpack --config config/webpack.pro.config.js"
   },
   "author": "CrossJae",
   "license": "ISC",
@@ -18,7 +19,8 @@
     "jquery": "^3.2.1",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.34",
