@@ -10,13 +10,16 @@ module.exports = {
     main: './app/entry.js', // app入口
   },
   output: { // output相当于一套规则，所有入口都必须遵守
-    path: path.resolve('./build/'),//path.resolve(__dirname, 'build'), // 必须传绝对路径
+    path: path.resolve('./build/'), // 必须传绝对路径 resolve转换成绝对路径
     filename: '[name].js' // 输出文件名
   },
-  devtool: 'source-map',
+  // devtool: 'source-map',
   devServer:{
-    contentBase: './build',
+    contentBase: './build', // 以build为根目录提供文件
     hot: true, // 热模块替换
+    inline: true,
+    stats: { colors: true },
+
   },
   module: { // webpack默认只能对Js打包，其他类型文件需要loader处理
     // loaders
