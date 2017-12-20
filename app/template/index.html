@@ -3,9 +3,81 @@
   <head>
     <meta charset="utf-8">
     <title>stage-webpack</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="wap-font-scale" content="no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
   </head>
   <body>
-    <div class="container">content</div>
+    <div id="myApp">
+        <div class="content">
+          <div class="logo">
+          </div>
+          <div class="title">
+            <img src="https://p1.ifengimg.com/redbag/images/shitutitle.png" />
+          </div>
+          <div class="register">
+            <div class="input num">
+              <input id="mobile" type="number" placeholder="请输入您的手机号" />
+            </div>
+            <div id="display" style="display:block">
+              <div class="input code">
+                <input id="codeNum" type="text" placeholder="请输入短信验证码" />
+                <span id="reSendCode">发送验证码</span>
+                <span id="waitResend" style="display:none" class="no">再过<strong id="time">60</strong>s发送</span>
+              </div>
+              <div class="input pw">
+                <input id="password" type="password" placeholder="请设置密码"/>
+              </div>
+            </div>
+          </div>
+          <div id="register" class="button">立即注册领取1-200元现金</div>
+        </div>
+        <div id="mask" style="display:none;">
+          <div class="container" style="display:none">
+            <p>为您的手机安全, 请输入图形码</p>
+            <div class="input code">
+              <input id="auth" placeholder="请输入图形码"/>
+              <span id="authImg"></span>
+            </div>
+            <div id="sure" class="button">确定</div>
+          </div>
+          <div class="tip" style="display:none">
+            <p class="tipText"></p>
+            <div id="know" class="button">确定</div>
+          </div>
+        </div>
+        <div class="i-luck" style="display:none;">
+          <div class="i-mask"></div>
+          <div class="i-reward">
+              <h6>注册成功</h6>
+              <p>1-200元红包已经到账</p>
+              <p>打开<span class="appName"></span>客户端即可领取</p>
+              <div class="i-reward-btn">立即下载，领取红包</div>
+              <div class="i-reward-close">关闭</div>
+          </div>
+        </div>
+        <div class="loadingMask" style="display:none;">
+          <div class="loadEffect">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+        </div>
+        <div class="accountTitle">
+          <img src="https://p1.ifengimg.com/redbag/images/shitutitle2.png"/>
+        </div>
+        <ul id="account"></ul>
+    </div>
   </body>
 </html>
