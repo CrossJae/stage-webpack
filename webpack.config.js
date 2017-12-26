@@ -7,7 +7,7 @@ const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: { // entry最好写成对象
-    main: './app/entry.js', // app入口
+    main: 'webpack-dev-server/client?http://localhost:8090/app/entry.js', // app入口
   },
   output: { // output相当于一套规则，所有入口都必须遵守
     path: path.resolve('./build/'), // 必须传绝对路径 resolve转换成绝对路径
