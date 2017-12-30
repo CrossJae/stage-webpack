@@ -17,7 +17,16 @@
     * options:{minimize:true //css压缩}
     * optimize-css-assets-webpack-plugin
   * [] !压缩html
-    * 
+    * https://github.com/kangax/html-minifier#options-quick-reference
+    ```
+    new HtmlWebpackPlugin({
+      filename: 'index.html', // 输出文件名
+      template: path.resolve('./app/template/index.html'), // 模版
+      minify: {
+          collapseWhitespace: true // 属性参见html-minifier
+      },
+    }),
+    ```
   * [] jsx / ttf loaders
   * [] 批量替换images路径再打包
   * [x] 单独打包css

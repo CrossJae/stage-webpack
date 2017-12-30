@@ -63,6 +63,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html', // 输出文件名
       template: path.resolve('./app/template/index.html'), // 模版
+      minify: {
+          collapseWhitespace: true
+      },
     }),
     // 单独分离css，有其他可配置参数
     new ExtractTextPlugin('[name].css'),
