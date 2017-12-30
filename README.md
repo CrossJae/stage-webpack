@@ -9,11 +9,16 @@
   * [] autoprefixer
   * [] 支持less / scss / css
   * [] 支持gif / png / jpg
+    * url-loader 生成dataurl
   * [] source-map
   * [x] !压缩js
-  * [] !压缩css
+    * uglifyJsPlugin
+  * [x] !压缩css
+    * options:{minimize:true //css压缩}
+    * optimize-css-assets-webpack-plugin
   * [] !压缩html
-  * [] css / images / jsx / ttf loaders
+    * 
+  * [] jsx / ttf loaders
   * [] 批量替换images路径再打包
   * [x] 单独打包css
   * [x] 配置文件单独归类
@@ -26,3 +31,13 @@
 * v1.1 [活动页] 支持单页面的打包，包括js,css（css3）,image（png,gif,jpg），支持es6，输出一个js的页面，和相应的html，对html,js进行压缩
 * v2.0 支持模版
 * v2.1 支持按需加载
+
+* v1.1 活动页面
+  * 生产模式 pro
+    * 单页html，资源有js/css/images，各自打包成独立文件，并压缩
+    * 资源有cdn路径
+    * 公用代码：微信分享、统计（page,action）、拉新拉活、防盗链
+  * 开发模式 dev
+    * dev-server
+    * hot-module
+    * source-map
