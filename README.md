@@ -16,7 +16,7 @@
   * [x] !压缩css
     * options:{minimize:true //css压缩}
     * optimize-css-assets-webpack-plugin
-  * [] !压缩html
+  * [x] !压缩html
     * https://github.com/kangax/html-minifier#options-quick-reference
     ```
     new HtmlWebpackPlugin({
@@ -49,4 +49,4 @@
   * 开发模式 dev
     * dev-server
     * hot-module
-    * source-map
+    * source-map !!!!!!!!!

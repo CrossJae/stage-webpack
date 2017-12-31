@@ -14,23 +14,29 @@ module.exports = {
     // publicPath: 'http://', // 打包生成的cdn地址
     filename: '[name].js' // 输出文件名
   },
-  devtool: 'source-map',
-  devServer:{
-    contentBase: './build', // 以build为根目录提供文件
-    hot: true, // 热模块替换
-    inline: true,
-    stats: { colors: true },
-  },
+  // devtool: 'source-map',
+  // devServer:{
+  //   contentBase: './build', // 以build为根目录提供文件
+  //   hot: true, // 热模块替换
+  //   inline: true,
+  //   stats: { colors: true },
+  //
+  // },
   module: { // webpack默认只能对Js打包，其他类型文件需要loader处理
     // loaders
     rules: [
       {
         // css
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-        ]
+        use: ExtractTextPlugin.extract({ // use，需要多个loader时，如果只有一个loader可以直接使用loader: 'xxx-loader'
+          fallback: 'style-loader',
+          use:[{
+            loader: 'css-loader',
+            options: {
+              minimize: true //css压缩
+            }
+          }]
+        }),
       },
       {
         // babel 兼容es6
@@ -40,10 +46,8 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env']
-            // presets: ['es2015']
           }
-        },
-        exclude: /node_modules/,
+        }
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -55,8 +59,28 @@ module.exports = {
     ]
   },
   plugins: [
+    // 生成html，有其他可配置参数
+    new HtmlWebpackPlugin({
+      filename: 'index.html', // 输出文件名
+      template: path.resolve('./app/template/index.html'), // 模版
+      minify: {
+          collapseWhitespace: true
+      },
+    }),
+    // 单独分离css，有其他可配置参数
+    new ExtractTextPlugin('[name].css'),
+    // 压缩js
+    new uglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    // 避免重复，提取公用js
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common' // 指定公共 bundle 的名称。
+    }),
     // new webpack.NamedModulesPlugin(),// 查看要修补(patch)的依赖
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
 
   ]
 }
