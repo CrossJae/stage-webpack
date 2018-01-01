@@ -14,26 +14,28 @@ module.exports = {
     // publicPath: 'http://', // 打包生成的cdn地址
     filename: '[name].js' // 输出文件名
   },
-  // devtool: 'source-map',
-  // devServer:{
-  //   contentBase: './build', // 以build为根目录提供文件
-  //   hot: true, // 热模块替换
-  //   inline: true,
-  //   stats: { colors: true },
-  //
-  // },
   module: { // webpack默认只能对Js打包，其他类型文件需要loader处理
     // loaders
     rules: [
       {
         // css
         test: /\.css$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({ // use，需要多个loader时，如果只有一个loader可以直接使用loader: 'xxx-loader'
           fallback: 'style-loader',
           use:[{
             loader: 'css-loader',
             options: {
-              minimize: true //css压缩
+              // minimize: true, //css压缩
+              importLoaders: 1,
+              // modules: true, // ???对应的html没有变化
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: { // 如果没有options这个选项将会报错 No PostCSS Config found
+              plugins: (loader) => [
+                autoprefixer(), //CSS浏览器兼容
+              ]
             }
           }]
         }),
@@ -41,9 +43,9 @@ module.exports = {
       {
         // babel 兼容es6
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/, // exclude排除
+        exclude: /(node_modules|bower_components)/, // exclude排除，优化，减少loader遍历的范围，加快wp编译速度
         use: {
-          loader: 'babel-loader',
+          loader: 'babel-loader?cacheDirectory',// 优化，开启cache选项，提高构建性能
           options: {
             presets: ['@babel/preset-env']
           }
@@ -64,7 +66,7 @@ module.exports = {
       filename: 'index.html', // 输出文件名
       template: path.resolve('./app/template/index.html'), // 模版
       minify: {
-          collapseWhitespace: true
+          // collapseWhitespace: true
       },
     }),
     // 单独分离css，有其他可配置参数
@@ -80,7 +82,5 @@ module.exports = {
       name: 'common' // 指定公共 bundle 的名称。
     }),
     // new webpack.NamedModulesPlugin(),// 查看要修补(patch)的依赖
-    // new webpack.HotModuleReplacementPlugin(),
-
   ]
 }

@@ -1,8 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -30,6 +27,14 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: { // 如果没有options这个选项将会报错 No PostCSS Config found
+              plugins: (loader) => [
+                autoprefixer(), //CSS浏览器兼容
+              ]
+            }
+          }
         ]
       },
       {
@@ -37,7 +42,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/, // exclude排除
         use: {
-          loader: 'babel-loader',
+          loader: 'babel-loader?cacheDirectory',// 优化，开启cache选项，提高构建性能
           options: {
             presets: ['@babel/preset-env']
             // presets: ['es2015']
@@ -57,6 +62,5 @@ module.exports = {
   plugins: [
     // new webpack.NamedModulesPlugin(),// 查看要修补(patch)的依赖
     new webpack.HotModuleReplacementPlugin(),
-
   ]
 }

@@ -2,15 +2,16 @@
 
 * for mac
 * todo list
-  * [] !hmr-开发环境
+  * [x] !hmr-开发环境
   * [x] 每次build之前清空之前build文件。先通过`rm -rf`命令删除build文件夹，再执行build
   * [x] 输出html文件
   * [x] babel - 兼容问题
   * [] autoprefixer
-  * [] 支持less / scss / css
-  * [] 支持gif / png / jpg
+  * [x] 支持less / scss / css
+  * [x] 支持gif / png / jpg
     * url-loader 生成dataurl
-  * [] source-map
+  * [x] source-map
+    * 调试打包时报错的具体位置
   * [x] !压缩js
     * uglifyJsPlugin
   * [x] !压缩css
@@ -31,7 +32,8 @@
   * [] 批量替换images路径再打包
   * [x] 单独打包css
   * [x] 配置文件单独归类
-  * [] 配置文件分 开发 / 生产
+  * [x] 配置文件分 开发 / 生产
+  * [] DllReferencePlugin 优化手段
   * [] !gzip 服务端
   * [] stage-vue
   * [] stage-react
@@ -49,4 +51,4 @@
   * 开发模式 dev
     * dev-server
     * hot-module
-    * source-map !!!!!!!!!
+    * source-map
