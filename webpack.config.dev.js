@@ -11,24 +11,23 @@ module.exports = {
     // publicPath: 'http://', // 打包生成的cdn地址
     filename: '[name].js' // 输出文件名
   },
-  devtool: 'source-map',
+  devtool: 'source-map', // 调试bug
   devServer:{
     contentBase: './build', // 以build为根目录提供文件
     hot: true, // 热模块替换
-    inline: true,
+    inline: true, // 实时刷新
     stats: { colors: true },
   },
   module: { // webpack默认只能对Js打包，其他类型文件需要loader处理
     // loaders
     rules: [
       {
-        // css
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader',
+          'css-loader', // 转换引用等
           {
-            loader: 'postcss-loader',
+            loader: 'postcss-loader', // 平台
             options: { // 如果没有options这个选项将会报错 No PostCSS Config found
               plugins: (loader) => [
                 autoprefixer(), //CSS浏览器兼容
@@ -48,10 +47,9 @@ module.exports = {
             // presets: ['es2015']
           }
         },
-        exclude: /node_modules/,
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpe?g|gif)$/,
         loader: 'url-loader',
         query : {
           limit: 8192,

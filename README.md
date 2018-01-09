@@ -6,7 +6,8 @@
   * [x] 每次build之前清空之前build文件。先通过`rm -rf`命令删除build文件夹，再执行build
   * [x] 输出html文件
   * [x] babel - 兼容问题
-  * [] autoprefixer
+  * [x] autoprefixer
+    * 在postcss中配置，还不知道兼容浏览器的方式
   * [x] 支持less / scss / css
   * [x] 支持gif / png / jpg
     * url-loader 生成dataurl
@@ -33,7 +34,8 @@
   * [x] 单独打包css
   * [x] 配置文件单独归类
   * [x] 配置文件分 开发 / 生产
-  * [] DllReferencePlugin 优化手段
+  * [] DllReferencePlugin 优化手段 提取第三方库
+  * [] copy-webpack-plugin 拷贝资源到编译目录
   * [] !gzip 服务端
   * [] stage-vue
   * [] stage-react
@@ -52,3 +54,11 @@
     * dev-server
     * hot-module
     * source-map
+
+
+* example
+```
+var ENV = process.env.npm_lifecycle_event;
+var isTest = ENV === 'test' || ENV === 'test-watch';
+var isProd = ENV === 'build';
+```

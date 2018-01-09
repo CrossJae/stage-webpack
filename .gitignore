@@ -4,3 +4,4 @@ npm-debug.log
 build
 *bundle.js
 app
+*.test.js
