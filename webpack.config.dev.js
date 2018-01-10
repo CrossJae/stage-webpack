@@ -68,7 +68,7 @@ module.exports = {
         // collapseWhitespace: true,
         // removeComments: true, //移除HTML中的注释
       },
-      projectPath: './assets/', // 替换模版里的项目路径
+      projectPath: './assets/', // 替换模版里的项目路径，可以自定义key
     }),
     // new webpack.NamedModulesPlugin(),// 查看要修补(patch)的依赖
     new webpack.HotModuleReplacementPlugin(),
