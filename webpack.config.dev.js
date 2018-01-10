@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: { // entry最好写成对象
@@ -58,7 +60,23 @@ module.exports = {
     ]
   },
   plugins: [
+    // 生成html，有其他可配置参数
+    new HtmlWebpackPlugin({
+      filename: 'index.html', // 输出文件名
+      template: path.resolve('./app/template/index.html'), // 模版
+      minify: {
+        // collapseWhitespace: true,
+        // removeComments: true, //移除HTML中的注释
+      },
+      projectPath: './assets/', // 替换模版里的项目路径
+    }),
     // new webpack.NamedModulesPlugin(),// 查看要修补(patch)的依赖
     new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin([ // 拷贝资源 到编译目录
+ 			{
+        from: './app/assets',
+        to: './assets'
+      }
+ 		])
   ]
 }

@@ -5,7 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const autoprefixer = require('autoprefixer');
 
-const pathUrl = 'http://p2.ifengimg.com/29daa33abbbc4bbc/2018/1/';
+const projectPath = 'http://p2.ifengimg.com/29daa33abbbc4bbc/2018/1/';
 module.exports = {
   entry: { // entry最好写成对象
     main: './app/entry.js', // app入口
@@ -55,12 +55,12 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jp?g|gif)$/,
+        test: /\.(png|jpe?g|gif)$/,
         loader: 'url-loader',
         query : {
           limit: 10,
-          name: '[name].[hash:7].[ext]',
-          publicPath: pathUrl,
+          name: 'assets/[name].[hash:7].[ext]',
+          publicPath: projectPath,
         }, // 处理图像，会将引入的图片编码，生成dataURl。url-loader提供了一个limit参数，小于limit字节的文件会被转为dataURl，大于limit的还会使用file-loader进行copy。还可以通过 name 字段来指定图片打包的目录与文件名&name=images/[hash:8].[name].[ext]。&publicPath=http://.
         // fallback: 'file-loader',// 超过limit，使用此loader
       },
@@ -72,9 +72,10 @@ module.exports = {
       filename: 'index.html', // 输出文件名
       template: path.resolve('./app/template/index.html'), // 模版
       minify: {
-          // collapseWhitespace: true,
-          removeComments: true, //移除HTML中的注释
+        // collapseWhitespace: true,
+        removeComments: true, //移除HTML中的注释
       },
+      projectPath: projectPath, // 替换模版里的项目路径
     }),
     // 单独分离css，有其他可配置参数
     new ExtractTextPlugin('[name].css'),
