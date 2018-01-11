@@ -38,6 +38,7 @@
   * [] DllReferencePlugin 优化手段 提取第三方库
   * [] copy-webpack-plugin 拷贝资源到编译目录
   * [] !gzip 服务端
+  * [] 根据不同项目都在一个文件中打包，分不同的子文件夹
   * [] stage-vue
   * [] stage-react
 
