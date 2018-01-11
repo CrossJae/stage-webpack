@@ -56,7 +56,10 @@
     * dev-server
     * hot-module
     * source-map
-
+* v1.2 活动页面，多页
+  * 根据项目分文件夹进行编译
+    * cli中输入诸如`npm run dev/build demo`文件夹
+    * 在build下生成 `build/demo` 路径
 
 * example
 ```

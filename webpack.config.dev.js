@@ -1,17 +1,28 @@
-const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path'),
+      webpack = require('webpack'),
+      autoprefixer = require('autoprefixer'),
+      HtmlWebpackPlugin = require('html-webpack-plugin'),
+      CopyWebpackPlugin = require('copy-webpack-plugin');
 
-var testconfig = process.env.npm_package_dir;
-console.log('test',testconfig)
+const PROJECTDIR = process.env.DIR || 'super';
+console.log('PROJECTDIR: ', PROJECTDIR);
+// console.log(JSON.parse(process.env.npm_config_argv).original);
+// npm run dev -- testarg="hhh"
+// console.log(process.argv)
+// 只能拿到process.argv数组的最后一个参数
+
+// console.log(process.env.npm_package_dir);
+
+// npm config set stage-webpack:testdir heiheihei
+// con
+
+
 module.exports = {
   entry: { // entry最好写成对象
-    main: './app/' + testconfig + '/entry.js', // app入口
+    main: './app/' + PROJECTDIR + '/entry.js', // app入口
   },
   output: { // output相当于一套规则，所有入口都必须遵守
-    path: path.resolve('./build/' + testconfig + '/'), // 必须传绝对路径 resolve转换成绝对路径
+    path: path.resolve('./build/' + PROJECTDIR + '/'), // 必须传绝对路径 resolve转换成绝对路径
     // publicPath: 'http://', // 打包生成的cdn地址
     filename: '[name].js' // 输出文件名
   },
@@ -65,7 +76,7 @@ module.exports = {
     // 生成html，有其他可配置参数
     new HtmlWebpackPlugin({
       filename: 'index.html', // 输出文件名
-      template: path.resolve('./app/' + testconfig + '/template/index.html'), // 模版
+      template: path.resolve('./app/' + PROJECTDIR + '/template/index.html'), // 模版
       minify: {
         // collapseWhitespace: true,
         // removeComments: true, //移除HTML中的注释
