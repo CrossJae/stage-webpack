@@ -84,9 +84,6 @@ module.exports = {
  			{
         from: './app/' + PROJECTDIR + '/assets',
         to: './assets'
-      },
-      {
-        from: './app/' + PROJECTDIR + '/lib'
       }
  		])
   ]
