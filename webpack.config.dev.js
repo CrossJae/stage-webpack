@@ -4,18 +4,8 @@ const path = require('path'),
       HtmlWebpackPlugin = require('html-webpack-plugin'),
       CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const PROJECTDIR = process.env.DIR || 'super';
+const PROJECTDIR = process.env.npm_config_dir || 'super';
 console.log('PROJECTDIR: ', PROJECTDIR);
-// console.log(JSON.parse(process.env.npm_config_argv).original);
-// npm run dev -- testarg="hhh"
-// console.log(process.argv)
-// 只能拿到process.argv数组的最后一个参数
-
-// console.log(process.env.npm_package_dir);
-
-// npm config set stage-webpack:testdir heiheihei
-// con
-
 
 module.exports = {
   entry: { // entry最好写成对象
@@ -23,15 +13,20 @@ module.exports = {
   },
   output: { // output相当于一套规则，所有入口都必须遵守
     path: path.resolve('./build/' + PROJECTDIR + '/'), // 必须传绝对路径 resolve转换成绝对路径
-    // publicPath: 'http://', // 打包生成的cdn地址
+    publicPath: '/', // 打包生成的cdn地址
     filename: '[name].js' // 输出文件名
   },
+  // resolve: {
+  //   extensions: ['.jsx', '.js'] // <-- Had to add the .js one
+  // },
   devtool: 'source-map', // 调试bug
   devServer:{
-    contentBase: './build/变量', // 以build为根目录提供文件
+    contentBase: './build/' + PROJECTDIR + '/', // 以build为根目录提供文件
     hot: true, // 热模块替换
     inline: true, // 实时刷新
     stats: { colors: true },
+    port: 9010,
+    host : '0.0.0.0',
   },
   module: { // webpack默认只能对Js打包，其他类型文件需要loader处理
     // loaders
@@ -87,11 +82,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([ // 拷贝资源 到编译目录
  			{
-        from: './app/assets',
+        from: './app/' + PROJECTDIR + '/assets',
         to: './assets'
       },
       {
-        from: './app/lib'
+        from: './app/' + PROJECTDIR + '/lib'
       }
  		])
   ]

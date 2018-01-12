@@ -3,17 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "entry.js",
-  "dir": "miqiuso",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "devtest": "webpack --config config/webpack.dev.config.js",
     "dev": "webpack-dev-server --config webpack.config.dev.js",
     "buildtest": "rm -rf build & webpack --config config/webpack.pro.config.js",
-    "dev": "process.env.npm_package_dir=${1} & webpack-dev-server --config webpack.config.dev.js",
-    "build": "rm -rf build & webpack --config webpack.config.pro.js",
-    "cc": "echo $1",
-    "dd": "DIR=${1} npm run dev",
-    "tt": "echo $this.dir"
+    "build": "rm -rf build & webpack --config webpack.config.pro.js"
   },
   "author": "CrossJae",
   "license": "ISC",
