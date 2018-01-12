@@ -10,6 +10,7 @@
     "buildtest": "rm -rf build & webpack --config config/webpack.pro.config.js",
     "build": "rm -rf build & webpack --config webpack.config.pro.js"
   },
+  "cdn": "http://p2.ifengimg.com/test/",
   "author": "CrossJae",
   "license": "ISC",
   "devDependencies": {
