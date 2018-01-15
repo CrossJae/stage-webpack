@@ -1,7 +1,7 @@
-export default function sta( behavior, type, other ){
-  var stadigurl = 'http://stadig.ifeng.com/appsta.js?datatype=newsappsns',
+// pv
+export function sta( behavior, type, other ){
+  var stadigurl = 'https://stadig.ifeng.com/appsta.js?datatype=newsappsns',
         ua = navigator.userAgent;
-
   // cookie
   var cookieUtil = {
     set : function(name, value, expires, path, domain, secure){
@@ -38,7 +38,7 @@ export default function sta( behavior, type, other ){
   };
 
   // 手机操作系统
-  var mos = () => {
+  var mos = function(){
     if( ua.match(/iphone|ipod/ig) || ua.match(/ipad/ig) ){
       return 'iphone';
     }else if( ua.match(/android/ig) ){
@@ -49,7 +49,7 @@ export default function sta( behavior, type, other ){
   }
 
   var userkeyUtil = {
-    get : (l) => {
+    get : function(l){
       var len = l || 32;
       var chars = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678";
       var charsLen = chars.length;
@@ -59,7 +59,7 @@ export default function sta( behavior, type, other ){
       }
       return uid;
     },
-    init : () => {
+    init : function(){
       if( cookieUtil.get('userkey') ){
         return cookieUtil.get('userkey');
       }else{
@@ -72,7 +72,7 @@ export default function sta( behavior, type, other ){
     }
   }
   // 分享来源
-  var sharefrom = () => {
+  var sharefrom = function(){
     if( ua.match(/MicroMessenger/ig) ){
       return 'wx';
     }else if( ua.match(/QQ\//) ){
@@ -84,7 +84,7 @@ export default function sta( behavior, type, other ){
     }
   }
   // 时间戳
-  var timestamp = () => {
+  var timestamp = function(){
     var now = new Date(),
         year = now.getFullYear(),
         month = format( now.getMonth() + 1 ),
@@ -100,7 +100,7 @@ export default function sta( behavior, type, other ){
     return now ? t : '';
   }
   // session字段,必须encode
-  var session = ( behavior, type, other ) => {
+  var session = function( behavior, type, other ){
     // behavior是必要参数 page 或 action
     // type 是必要参数
 

@@ -3,47 +3,60 @@
 <head>
   <meta charset="utf-8">
   <title>超级短信</title>
-  <link rel="stylesheet" href="http://p1.ifengimg.com/3af6807ab94632d0/2018/2/swiper.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://p1.ifengimg.com/3af6807ab94632d0/2018/2/swiper.min.css" />
+  <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script>
+<script src="https://p1.ifengimg.com/3af6807ab94632d0/2018/2/swiper.min.js"></script>
 </head>
 <body>
-  <!-- Swiper -->
-  <div class="swiper-container">
+  <div class="ihatebrowser">
     <div class="openbutton">
-      <img src="./images/open@3x.png" id="gotoapp">
+      <img src="https://p1.ifengimg.com/a/2018/cjdx/open@3x.png" id="gotoapp">
     </div>
     <div class="swiper-wrapper">
       <div class="swiper-slide backgroundpicture-1">
-        <img src="./images/pic01.png" />
+        <img src="https://p1.ifengimg.com/a/2018/cjdx/pic01.png" />
         <div class="logo">
-          <img src="./images/logo.png" />
+          <img src="https://p1.ifengimg.com/a/2018/cjdx/logo.png" />
         </div>
       </div>
       <div class="swiper-slide backgroundpicture-2">
-        <img src="./images/pic02.png" />
+        <img src="https://p1.ifengimg.com/a/2018/cjdx/pic02.png" />
         <div class="logo">
-          <img src="./images/logo.png" />
+          <img src="https://p1.ifengimg.com/a/2018/cjdx/logo.png" />
         </div>
       </div>
       <div class="swiper-slide backgroundpicture-3">
-        <img src="./images/pic03.png" />
+        <img src="https://p1.ifengimg.com/a/2018/cjdx/pic03.png" />
         <div class="logo">
-          <img src="./images/logo.png" />
+          <img src="https://p1.ifengimg.com/a/2018/cjdx/logo.png" />
         </div>
       </div>
       <div class="swiper-slide backgroundpicture-4">
-        <img src="./images/pic04.png" />
+        <img src="https://p1.ifengimg.com/a/2018/cjdx/pic04.png" />
         <div class="logo">
-          <img src="./images/logo.png" />
+          <img src="https://p1.ifengimg.com/a/2018/cjdx/logo.png" />
         </div>
       </div>
     </div>
     <div class="swiper-pagination"></div>
   </div>
-  <!-- Swiper JS -->
-  <script type="text/javascript" src="http://p3.ifengimg.com/29daa33abbbc4bbc/2018/1/callNewsApp180104.js"></script>
-  <!-- <script src="http://p1.ifengimg.com/3af6807ab94632d0/2018/2/swiper.min.js"></script> -->
 
+  <script type="text/javascript">
+  // swiper
+  var swiper = new Swiper('.ihatebrowser',{
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay:{
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    loop: true,
+  });
 
+  </script>
 </body>
 </html>

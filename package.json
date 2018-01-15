@@ -5,12 +5,10 @@
   "main": "entry.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devtest": "webpack --config config/webpack.dev.config.js",
     "dev": "webpack-dev-server --config webpack.config.dev.js",
-    "buildtest": "rm -rf build & webpack --config config/webpack.pro.config.js",
     "build": "rm -rf build & webpack --config webpack.config.pro.js"
   },
-  "cdn": "http://p2.ifengimg.com/test/",
+  "cdn": "https://p1.ifengimg.com/a/2018/cjdx/",
   "author": "CrossJae",
   "license": "ISC",
   "devDependencies": {
@@ -28,7 +26,7 @@
     "url-loader": "^0.6.2",
     "vue": "^2.5.13",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.34",

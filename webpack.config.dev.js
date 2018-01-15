@@ -49,14 +49,14 @@ module.exports = {
       {
         // babel 兼容es6
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/, // exclude排除
+        exclude: /(node_modules|bower_components)/, // exclude排除，优化，减少loader遍历的范围，加快wp编译速度
         use: {
           loader: 'babel-loader?cacheDirectory',// 优化，开启cache选项，提高构建性能
           options: {
             presets: ['@babel/preset-env']
-            // presets: ['es2015']
-          }
-        },
+          },
+          // include: path.resolve('node_modules/webpack-dev-server/client')
+        }
       },
       {
         test: /\.(png|jpe?g|gif)$/,

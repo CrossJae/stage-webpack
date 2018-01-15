@@ -3,5 +3,6 @@ npm-debug.log
 *.DS_Store
 build
 *bundle.js
-#app
+app
 *.test.js
+TODO.md
